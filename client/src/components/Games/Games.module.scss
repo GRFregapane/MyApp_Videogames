@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.cardsContainer{
+    // @include flexCenter(space-around, row);
+    // flex-wrap: wrap;
+
+    // .cards {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+       
+}

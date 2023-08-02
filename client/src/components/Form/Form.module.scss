@@ -1,0 +1,80 @@
+@import '../../variables.scss';
+
+.flex{
+  @include flexCenter(flex-start, column);
+  
+  margin-top: 3rem;
+  height: 90vh;
+  font-size:1.3rem;
+}
+
+.gridContainer{
+  display:grid;
+  width: 50%;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3,minmax(40px,auto));
+  // background-color:$white;
+  background-color:rgb(255, 255, 255, 0.5);
+  padding:1rem;
+  border-radius: 10px;
+}
+
+.formGroupRow{
+  display:grid;
+  width:100%;
+  grid-template-columns: 1fr 3fr;
+  text-align: start;
+  color:$secondary;
+  font-weight: bold;
+  
+}
+
+.formLabelCol{
+  // grid-column: 1;
+  text-align: start;
+}
+
+.formInputCol{
+  // grid-column: 2/4;
+  text-align: start;
+  
+}
+
+.input{
+  width:75%
+}
+
+.danger{
+  color:red
+}
+
+.divButton{
+  display:flex;
+  justify-content: right;
+  margin: 1rem;
+  font-size:1.3rem;
+}
+/* $theme-colors: (
+  "primary": #3eff3f,
+  "danger": #000117,
+  "secondary":#00be00
+); */
+/* 
+.border-card {
+  border-width:3px;
+  border-style: solid
+
+}
+
+.col-form-label{
+  width: 100px;
+}
+
+.navbar{
+  
+  border-bottom: #3eff3f;
+  border-style:solid;
+  overflow: hidden;
+  
+    
+} */

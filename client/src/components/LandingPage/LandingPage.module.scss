@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.landingPage{
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-start;
+    background: url('../../img/videogame1.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size:cover;
+    
+ 
+}
+
+.header{
+  display: block;
+  margin:10px;
+}

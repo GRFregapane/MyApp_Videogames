@@ -1,0 +1,36 @@
+@import '../../variables.scss';
+
+.pageNumbers {
+    list-style: none;
+    @include flexCenter(flex-end,row);  
+    margin:10px;    
+    
+}
+
+
+.pageNumbers li{
+    
+    padding: 10px;
+    border:1px solid $white;
+    cursor:pointer;
+    color:$white;
+    max-height:38px;
+}
+
+.pageNumbers li.active{
+    background-color:$white;
+    color:$secondary;
+}
+
+.pageNumbers li button{
+    background-color:transparent;
+    border:none;
+    color:$white;
+    cursor:pointer
+}
+
+.selector{
+    margin: 10px;
+    border-radius: 25px;
+    width: max-content;
+}

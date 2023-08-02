@@ -1,42 +1,46 @@
 import React, { useState } from "react";
-import { validateSearchTerm } from "./utils";
 import { useDispatch } from "react-redux";
-import { searchVideoGames } from "./actions";
+import s from './SearchBar.module.scss';
+import { getGameSearched } from "../../reducers/actions";
 
-const SearchBar = () => {
-  const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState(null);
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    const searchError = validateSearchTerm(searchTerm);
-    if (searchError) {
-      setError(searchError);
-    } else {
-      dispatch(searchVideoGames(searchTerm));
-    }
-  };
+const SearchBar=()=> {
+  
+  const [input, setInput] = useState('')
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const dispatch = useDispatch()
+  
+  const handleChange =(e) =>{
+      setInput(e.target.value)
+  }
 
-  return (
-    <form onSubmit={handleSearchSubmit}>
-      <label htmlFor="search">Search:</label>
-      <input
-        type="text"
-        id="search"
-        name="search"
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <button type="submit">Search</button>
-      {error && <p>{error}</p>}
-    </form>
-  );
-};
+  const handleSubmit =(e) => {
+      e.preventDefault()
+      dispatch(getGameSearched(input))
+      setInput('')
+  }
+    
+    return (
+      
+        <form className={s.formContainer} onSubmit={(e) => handleSubmit(e)}>
+          <div className='divSB'>
+            <input
+              type="text"
+              id="title"
+              autoComplete="off"
+              value={input}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <button className={s.btn} type="submit">SEARCH</button>
+        </form>
+      
+    );
+  
+}
 
-export default SearchBar;
+
+export default SearchBar
+
+
 

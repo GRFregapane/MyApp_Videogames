@@ -1,33 +1,30 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchVideoGamesPage } from '../actions';
-import { Link } from 'react-router-dom';
-import backgroundImage from '../assets/images/videogame1.jpg';
-
-function LandingPage() {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(fetchVideoGamesPage(1));
-  };
+import { useHistory } from 'react-router-dom';
+import s from './LandingPage.module.scss';
 
 
-  return (
-    <div 
-      className="landing-page"
-      style={{
-        backgroundImage: `url(${backgroundImage})`
-      }}
-    >
-      <div className="landing-page__content">
-        <h1 className="landing-page__heading">WELCOME!</h1>
-        <p className="landing-page__description">Here you can find information about video games.</p>
-        <Link to="/home" onClick={handleClick}>
-          <button className="landing-page__cta-button">Get into</button>
-        </Link>
-      </div>
-    </div>
-  );
+const LandingPage = () =>{
+
+    const history = useHistory();
+
+    const routeChange = () =>{ 
+      let path = "/videogames"; 
+      history.push(path);
+    }
+
+    return(
+        <div className={s.landingPage}>
+            <h1 className={s.header}>Welcome, here you can find a variety of videogames.</h1>
+            <br />
+            <button 
+                className={`${s.btn} ${s.btnPrimary}`}
+                onClick={routeChange} 
+                >
+                PRESS START 
+            </button>
+            
+        </div>
+    )
 }
 
 export default LandingPage;
-

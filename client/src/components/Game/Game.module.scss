@@ -1,0 +1,226 @@
+
+@import '../../variables.scss';
+
+.cardsItem{
+    width:250px;
+    height:300px;
+    display: flex;
+    margin:10px;
+   
+}
+
+.card{
+    width:250px;
+    height:300px;
+    background-color:$grey;
+    
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    &:hover {
+      /* background-color: salmon;
+      background-image: linear-gradient(62deg, salmon 0%, #E0C3FC 100%); */
+      transform:scale(110%);
+      transition:linear;
+      transition-duration:0.1s;
+      background-color:$white;
+      color:$grey;
+    }
+    
+  &Image {
+    width:250px;
+    height:100%;
+    
+    overflow:hidden;
+    background:transparent;
+    display:flex;
+    align-items: flex-end;
+    justify-content: center;
+    img {
+      object-fit: cover;
+      width: 250px;
+      height: 100%;
+      border-radius:0 0 1rem 1rem;
+      position:relative;
+    }
+    }
+    
+}
+
+.divContent{
+  margin-top: 5px;
+  height:50px;
+}
+
+.cardTitle {
+    
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-weight:bolder;
+    width:100%;
+    // margin:0px 0px 0px 0px;
+    
+    // text-transform: uppercase;
+  }
+
+  .cardContent {
+    width:250px;
+    height:35%;
+    display: flex;
+    
+    flex-direction: column;
+    
+    ul {
+        list-style-type:none;
+        padding:0 0 0 10px;
+        // margin:20px 0 0 0;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        li {
+        //   display:inline;
+          font-size:12px;
+          padding:0 5px 0 5px;
+          border-right: 1px solid $white;
+          &:last-child{
+            border:none;
+          }
+        }
+      }
+}
+
+.btn{
+    align-self:flex-end;
+    
+    margin:5px;
+    font-size:10px;
+    width: max-content;
+    color:$grey;
+    background-color: $white;
+    border-color:$grey;
+    &:hover{
+      background-color: $grey;
+      color:$white;
+
+    }
+}
+
+
+
+// .cardImage{
+
+// }
+
+
+
+// // html, body {
+// //   margin: 0;
+// //   background: black;
+// //   font-family: "Montserrat", helvetica, arial, sans-serif;
+// //   font-size: 14px;
+// //   font-weight: 400;
+// // }
+
+// // span .genre{
+// //   color: #cee4fd;
+// //   margin-left: 10px;
+// // }
+
+// // link{
+// //   @include flexCenter(center,column);
+// //   height: 100px;
+// //   width:70px;
+// // }
+
+// .gameCard {
+//   // position: relative;
+//   @include flexCenter(space-between,row);
+//   // height: 500px;
+  
+//   // .type{
+//   //   display: inline;
+//   //   margin-left: 10px;
+//   // }
+// }
+
+// .gameCard{
+//   width:320px;
+//   padding:20px;
+//   overflow: hidden;
+//   border-radius: 10px;
+//   transition: all 0.4s;
+//   &:hover{
+//     transform: scale(1.02);
+//     transition: all 0.4s;
+//   }
+  
+// }
+
+// // .game_card .info_section {
+// //   position: relative;
+// //   width: 100%;
+// //   height: 100%;
+// //   background-blend-mode: multiply;
+// //   z-index: 2;
+// //   border-radius: 10px; 
+// // }
+
+// // .gameCard h1 {
+// //   color: $white;
+// //   // font-weight: 400;
+  
+// // }
+
+
+// // .game_card .info_section .game_header .type {
+// //   display: inline-block;
+// //   /* color: #cee4fd; */
+// //   margin-left: 10px;
+// // }
+
+// // @media screen and (min-width: 768px) {
+// //   .gameCard {
+// //     width: 60%;
+// //     background: linear-gradient(to right, #0d0d0c 50%, transparent 100%);
+// //     display: inline-grid;
+    
+// //   }
+
+//   // .info_section {
+//   //   background: linear-gradient(to right, #0d0d0c 50%, transparent 100%);
+//   //   display: inline-grid;
+//   // }
+
+ 
+// // }
+// @media screen and (max-width: 768px) {
+//   .gameCard {
+//     width: 95%;
+//     margin: 70px auto;
+//     min-height: 350px;
+//     height: auto;
+//   }
+
+
+//   // .game_header {
+//   //   width: 100%;
+//   //   margin-top: 85px;
+//   // }
+
+
+//   // .info_section {
+//   //   background: linear-gradient(to top, #141413 50%, transparent 100%);
+//   //   display: inline-grid;
+//   // }
+// }
+
+
+// .imgContainer img {
+// 	height: 350px;
+
+// 	border-radius: 2px;
+//   // object-fit: cover;
+
+// }

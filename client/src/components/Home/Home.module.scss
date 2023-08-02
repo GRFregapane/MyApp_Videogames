@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.topBar {
+    display:flex;
+    justify-content: space-around;
+    margin:10px;
+    align-items: center;    
+}
+
+.loading{
+    position: relative;
+    justify-content: center;
+    margin-top:100px;
+    height:200px;
+}
+
+
+
+.container{
+    @include flexCenter(center, column);
+    height:100vp;
+}

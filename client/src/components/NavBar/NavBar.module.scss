@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+
+.navbar{
+    height: 50px;
+    @include flexCenter(space-between, row);
+    background-color:$grey;
+   
+}
+
+.navlink{
+    margin: 5px;
+    text-decoration: none !important;
+    display:flex;
+    align-items: center
+}
+
+.titleApp{
+   
+    color:$white;
+    font-size: large;
+    margin-left:5px;
+    font-weight: bold;
+}
+
+.logo{
+    margin: 0 5px 0 5px;
+}
+
+.btn{
+    margin-right:5px
+}
+
+.navOption{
+    color:$white;
+    font-size: medium;
+    margin-right:5px;
+    font-weight: bold;
+}

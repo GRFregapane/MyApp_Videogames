@@ -1,0 +1,9 @@
+@import '../../variables.scss';
+
+.formContainer{
+    @include flexCenter(center,row);
+}
+
+.btnSb{
+    height:100%
+}

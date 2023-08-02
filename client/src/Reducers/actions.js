@@ -1,109 +1,106 @@
-import axios from 'axios';
 import {
-  SEARCH_VIDEOGAMES,
-  VIEW_VIDEOGAME,
-  FILTER_VIDEOGAMES,
-  SORT_VIDEOGAMES,
-  CREATE_VIDEOGAME,
-  DELETE_VIDEOGAME,
-  FETCH_VIDEOGAMES_PAGE_REQUEST, 
-  FETCH_VIDEOGAMES_PAGE_SUCCESS, 
-  FETCH_VIDEOGAMES_PAGE_FAILURE,
-} from './actionsTypes'
-import { videogamesEndpoint } from '../../../api/src/utils';
+    server,
+    GET_GAMES,
+    GET_GENRES,
+    GET_GAME_DETAILS,
+    GET_GAME_SEARCHED,
+    FILTER_BY_GENRE,
+    FILTER_BY_CREATED, 
+    SORT_BY_RATING, 
+    SORT_BY_NAME
+} from '../constants'
 
-// Acción para buscar videojuegos
-export const searchVideogames = (query) => (dispatch) => {
-  axios
-    .get(`${videogamesEndpoint}?search=${query}`)
-    .then((response) => {
-      dispatch({ type: SEARCH_VIDEOGAMES, payload: response.data });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+export function getGames() {
+    return function (dispatch) {
+        return fetch(`${server}/videogames`)
+            .then(response => response.json())
+            .then(json => {
 
-// Acción para visualizar un videojuego
-export const viewVideogame = (id) => (dispatch) => {
-  axios
-    .get(`${videogamesEndpoint}/${id}`)
-    .then((response) => {
-      dispatch({ type: VIEW_VIDEOGAME, payload: response.data });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+                dispatch({
+                    type: GET_GAMES,
+                    payload: json
+                });
 
-// Acción para filtrar videojuegos
-export const filterVideogames = (filters) => (dispatch) => {
-  axios
-    .get('videogamesEndpoint', { params: filters })
-    .then((response) => {
-      dispatch({ type: FILTER_VIDEOGAMES, payload: response.data });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+            })
+            .catch(error => alert(error));
+    };
+}
 
-// Acción para ordenar videojuegos
-export const sortVideogames = (sortBy) => (dispatch) => {
-  axios
-    .get('videogamesEndpoint', { params: { sort: sortBy } })
-    .then((response) => {
-      dispatch({ type: SORT_VIDEOGAMES, payload: { sortBy, data: response.data } });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+export function getGenres() {
+    return function (dispatch) {
+        return fetch(`${server}/genres`)
+            .then(response => response.json())
+            .then(json => {
 
-// Acción para crear un nuevo videojuego
-export const createVideogame = (data) => (dispatch) => {
-  axios
-    .post('videogamesEndpoint', data)
-    .then((response) => {
-      dispatch({ type: CREATE_VIDEOGAME, payload: response.data });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+                dispatch({
+                    type: GET_GENRES,
+                    payload: json
+                });
 
-// Acción para eliminar un videojuego
-export const deleteVideogame = (id) => (dispatch) => {
-  axios
-    .delete(`${videogamesEndpoint}/${id}`)
-    .then(() => {
-      dispatch({ type: DELETE_VIDEOGAME, payload: id });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+            })
+            .catch(error => alert(error));
+    };
+}
 
-export const fetchVideogamesPageRequest = () => ({
-  type: FETCH_VIDEOGAMES_PAGE_REQUEST
-});
+export function getGameDetails(idGame) {
+    return function (dispatch) {
+        return fetch(`${server}/videogames/${idGame}`)
+            .then(response => response.json())
+            .then(json => {
 
-export const fetchVideogamesPageSuccess = (videoGames, page) => ({
-  type: FETCH_VIDEOGAMES_PAGE_SUCCESS,
-  payload: { videoGames, page }
-});
+                dispatch({
+                    type: GET_GAME_DETAILS,
+                    payload: json
+                });
 
-export const fetchVideogamesPageFailure = (error) => ({
-  type: FETCH_VIDEOGAMES_PAGE_FAILURE,
-  payload: error
-});
+            })
+            .catch(error => alert(error));
+    };
+}
 
-export const fetchVideogamesPage = (page) => {
-  return (dispatch) => {
-    dispatch(fetchVideogamesPageRequest());
-    return fetch(`https://example.com/api/video-games?page=${page}`)
-      .then(response => response.json())
-      .then(data => dispatch(fetchVideogamesPageSuccess(data, page)))
-      .catch(error => dispatch(fetchVideogamesPageFailure(error)));
-  };
-};
+export function getGameSearched(name) {
+    return function (dispatch) {
+        return fetch(`${server}/videogames?name=${name}`)
+            .then(response => response.json())
+            .then(json => {
+                if (json.msg === 'Error: no matches found') {
+                    throw (json.msg)
+                } else {
+                    dispatch({
+                        type: GET_GAME_SEARCHED,
+                        payload: json
+                    })
+                };
+
+            })
+            .catch(error => alert(error));
+    };
+}
+
+export function filterByGenre(payload) {
+    return {
+        type: FILTER_BY_GENRE,
+        payload
+        }
+}
+
+export function filterByCreated(payload) {
+    return {
+        type: FILTER_BY_CREATED,
+        payload
+    }
+}
+
+export function sortByRating(payload) {
+    return {
+        type: SORT_BY_RATING,
+        payload
+    }
+}
+
+export function sortByName(payload) {
+    return {
+        type: SORT_BY_NAME,
+        payload
+    }
+}
