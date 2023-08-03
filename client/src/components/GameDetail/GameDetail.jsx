@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import s from './GameDetail.module.scss';
-import {getGameDetails} from '../../reducers/actions'
+import {getGameDetails} from '../../Reducers/actions'
 import Animation from '../../img/Ryu.gif' //modificar
 
 

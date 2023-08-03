@@ -1,5 +1,4 @@
-// const server = 'http://localhost:3001';
-const server = "https://fierce-dawn-86733.herokuapp.com";
+
 const GET_GAMES = "GET_GAMES";
 const GET_GENRES = "GET_GENRES";
 const GET_GAME_DETAILS = "GET_GAME_DETAILS";
@@ -15,7 +14,7 @@ const ADD_GAME = "ADD_GAME";
 
 
 
-/*const platforms = [
+const platforms = [
   {
     id: 4,
     name: "PC",
@@ -220,7 +219,10 @@ const ADD_GAME = "ADD_GAME";
     id: 171,
     name: "Web",
   },
-];*/
+];
+
+const server = 'http://localhost:3001';
+//const server = "https://fierce-dawn-86733.herokuapp.com";
 
 export {
   server,
@@ -233,5 +235,5 @@ export {
   SORT_BY_RATING,
   SORT_BY_NAME,
   ADD_GAME,
-  //platforms,
+  platforms,
 };

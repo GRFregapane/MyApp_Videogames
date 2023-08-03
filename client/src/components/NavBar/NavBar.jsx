@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Logo from '../../img/game_gamepad_1486.png' //importar logo que quieras
+import Logo from '../../img/game_gamepad_1486.png' //importar logo que quiera
 
 import s from './NavBar.module.scss';
 

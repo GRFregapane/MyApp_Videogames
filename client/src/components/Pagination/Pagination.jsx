@@ -8,7 +8,7 @@ import {
   sortByRating,
   filterByCreated,
   filterByGenre,
-} from "../../reducers/actions";
+} from "../../Reducers/actions";
 
 function Pagination() {
   const dispatch = useDispatch();

@@ -1,16 +1,10 @@
 import React from 'react';
 import s from './Game.module.scss'
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function Game({name,id,background_image, genres}) {
-    const history = useHistory();
-
-    const routeChange = () =>{ 
-      let path = `/videogames/details/${id}`; 
-      history.push(path);
-    }
-  
-    let genresSort = genres.sort((a, b) => {
+    
+        let genresSort = genres.sort((a, b) => {
         
             if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
@@ -31,7 +25,7 @@ export function Game({name,id,background_image, genres}) {
                         {genresSort.map(element =><li key={element.id}>{element.name}</li>)}
                     </ul>
                 </div>
-                <button className={s.btn} onClick={routeChange}>See more</button>
+                <Link className={s.btn} to={`/videogames/details/${id}`}>See more</Link>
             </div>
             <div className={s.cardImage}>
 	            <img src={background_image}  alt=""/>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import s from './SearchBar.module.scss';
-import { getGameSearched } from "../../reducers/actions";
+import { getGameSearched } from "../../Reducers/actions";
 
 
 const SearchBar=()=> {

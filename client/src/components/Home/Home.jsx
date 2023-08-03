@@ -3,7 +3,7 @@ import s from './Home.module.scss';
 import Pagination  from "../Pagination/Pagination";
 import SearchBar from '../SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux'; 
-import { getGames, getGenres } from '../../reducers/actions';
+import { getGames, getGenres } from '../../Reducers/actions';
 import Animation from '../../img/Ryu.gif' 
 
 

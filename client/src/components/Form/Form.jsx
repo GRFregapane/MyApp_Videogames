@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { getGames } from '../../reducers/actions';
-import swal from 'sweetalert';
+import { getGames } from '../../Reducers/actions';
+import swal  from 'sweetalert';
 import { platforms, server } from '../../constants';
 import { useDispatch, useSelector } from 'react-redux';
 import MultiSelector from '../MultipleSelector/MultipleSelector';
