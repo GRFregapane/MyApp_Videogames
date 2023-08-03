@@ -49,7 +49,7 @@ const Filter=({handleChangeGenre, val, count})=> {
 }
 
 
-export default Filter
+export default Filter;
 
 
 

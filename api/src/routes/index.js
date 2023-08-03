@@ -70,7 +70,7 @@ module.exports = router;
 
 
 // router.get('/platforms', async (req,res)=>{
-//     let response = await axios.get(`${API}/platforms?key=${API_KEY}&page=2`)
+//     let response = await axios.get(`${API_HOST}/platforms?key=${API_KEY}&page=2`)
 
 //     let platforms = response.data.results.map(element => {
 //         return {

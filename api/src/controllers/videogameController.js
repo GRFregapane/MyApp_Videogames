@@ -148,9 +148,6 @@ async function postGame(req,model1){
 }
 
 
-
-
-
 module.exports ={ 
     getAllVideogames,
     getVideogamesByName, 

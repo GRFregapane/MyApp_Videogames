@@ -9,7 +9,13 @@ const FILTER_BY_CREATED = "FILTER_BY_CREATED";
 const SORT_BY_RATING = "SORT_BY_RATING";
 const SORT_BY_NAME = "SORT_BY_NAME";
 const ADD_GAME = "ADD_GAME";
-const platforms = [
+
+
+
+
+
+
+/*const platforms = [
   {
     id: 4,
     name: "PC",
@@ -214,7 +220,7 @@ const platforms = [
     id: 171,
     name: "Web",
   },
-];
+];*/
 
 export {
   server,
@@ -227,5 +233,5 @@ export {
   SORT_BY_RATING,
   SORT_BY_NAME,
   ADD_GAME,
-  platforms,
+  //platforms,
 };
