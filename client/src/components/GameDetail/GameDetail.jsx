@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import s from './GameDetail.module.scss';
-import {getGameDetails} from '../../Reducers/actions'
+import {getGameDetails} from '../../Reducers/actions';
+import { useParams } from "react-router-dom";
 import Animation from '../../img/Ryu.gif' //modificar
 
 
-
-
-
-function GameDetails ({match, getGameDetails, gameDetails}){
+function GameDetails ({ getGameDetails, gameDetails}){
+    const { id } = useParams();
     const background={
         backgroundImage: `url(${gameDetails.background_image_additional})`,
         backgroundSize: 'cover'
@@ -17,15 +16,16 @@ function GameDetails ({match, getGameDetails, gameDetails}){
     const [loading, setLoading] = useState(true)
    
     async function getDetails(){
-        await getGameDetails(match.params.id)
+        await getGameDetails(id)
         setLoading(false)
     }
 
     useEffect(()=>{
         setLoading(true)
         getDetails()
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
+  
 
     if(loading){
         return(

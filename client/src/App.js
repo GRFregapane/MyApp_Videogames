@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       {pathname === "/" ? null: <NavBar/>}
       <Routes>
-      <Route path='/' element={LandingPage}/>
-      <Route path='/videogames' element={Home}/>
-      <Route path="/videogames/details/:id" element={GameDetails}/>
-      <Route path="/videogames/add-videogame" element={Form}/>
+      <Route path='/' element={<LandingPage/>}/>
+      <Route path='/videogames' element={<Home/>}/>
+      <Route path="/videogames/details/:id" element={<GameDetails/>}/>
+      <Route path="/videogames/add-videogame" element={<Form/>}/>
       </Routes>
     </div>
   );
