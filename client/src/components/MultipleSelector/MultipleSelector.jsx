@@ -2,10 +2,20 @@ import React, {useState} from 'react';
 import s from './MultipleSelector.module.scss'
 
 function MultiSelector ({title, data, handleOnClick, isItemInSelection}){
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false); //useState para inicializar el estado open como false.
     
-    let prop = title.slice(7).toLowerCase()
+    let prop = title.slice(7).toLowerCase()//prop que obtiene una porción de title y la convierte a minúsculas.
     
+
+/*El componente MultiSelector muestra un contenedor principal con la clase de estilo container.
+Dentro del contenedor, hay un encabezado (ddHeader) que tiene un comportamiento de desplegable.
+Al hacer clic en él o presionar la tecla Enter, se cambia el estado open para abrir o cerrar el desplegable.
+El encabezado muestra el título (title) y un mensaje que indica si el desplegable está abierto o cerrado.
+Si el desplegable está abierto (open es true), se muestra una lista (ddList) que contiene elementos (li). 
+Cada elemento se crea utilizando el arreglo de datos (data) proporcionado como propiedad.
+Cada elemento de la lista es un botón que llama a la función handleOnClick cuando se hace clic en él.
+El botón muestra el nombre del elemento y la palabra "Selected" si el elemento está seleccionado según la función
+isItemInSelection*/
     return(
         <div className={s.container}>
 
@@ -41,4 +51,8 @@ function MultiSelector ({title, data, handleOnClick, isItemInSelection}){
     )
 }
 
-export default MultiSelector
+export default MultiSelector;
+
+/*MultiSelector muestra un selector múltiple con un encabezado que se puede abrir y cerrar. Los elementos del selector 
+se obtienen del arreglo de datos proporcionado. Cada elemento tiene un botón que muestra su nombre y si está seleccionado.
+ Al hacer clic en un botón, se llama a la función handleOnClick para manejar la selección del elemento*/

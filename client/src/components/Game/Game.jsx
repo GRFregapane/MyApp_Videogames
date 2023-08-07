@@ -10,6 +10,8 @@ export function Game({name,id,background_image, genres}) {
             if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
             return 0
     })
+    //El componente renderiza una tarjeta de juego que contiene el nombre del juego (name) y una lista de 
+    //géneros (genresSort). Cada género se renderiza como un elemento de lista (li).
         
     return (
 
@@ -36,3 +38,6 @@ export function Game({name,id,background_image, genres}) {
 )};
 
 export default Game;
+
+/*el componente Game muestra la información de un juego en una tarjeta, incluyendo el nombre, los géneros y una imagen 
+de fondo. También proporciona un enlace para ver más detalles del juego*/

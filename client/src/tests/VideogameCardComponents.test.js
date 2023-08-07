@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import VideogameCard from '../components/VideogameCard';
+import Game from '../components/Game';
 
-describe('VideogameCard component', () => {
-  const videogame = {
+describe('Game component', () => {
+  const game = {
     id: 1,
     name: 'Super Mario Bros.',
     released: '1985-09-13',
@@ -12,7 +12,7 @@ describe('VideogameCard component', () => {
   };
 
   test('renders properly', () => {
-    render(<VideogameCard videogame={videogame} />);
+    render(<Game game={game} />);
     const name = screen.getByText('Super Mario Bros.');
     const released = screen.getByText('Released: 1985-09-13');
     const rating = screen.getByText('Rating: 4.5');
@@ -21,13 +21,13 @@ describe('VideogameCard component', () => {
     expect(rating).toBeInTheDocument();
   });
 
-  test('clicking on the card calls the callback function', () => {
+  test('clicking on the game calls the callback function', () => {
     const handleClick = jest.fn();
-    render(<VideogameCard videogame={videogame} onClick={handleClick} />);
-    const card = screen.getByRole('button');
-    card.click();
+    render(<Game game={game} onClick={handleClick} />);
+    const gameElement = screen.getByRole('button');
+    gameElement.click();
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
-/*En este ejemplo, se está probando que el componente VideogameCard se 
-renderice correctamente con los datos del videojuego y que el evento onClick se dispare cuando se hace clic en la tarjeta.*/
+/*En este ejemplo, se está probando que el componente Game se renderice correctamente con los datos del videojuego y
+ que el evento onClick se dispare cuando se hace clic en la tarjeta.*/

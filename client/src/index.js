@@ -19,3 +19,8 @@ ReactDOM.render(
 
 
 reportWebVitals();
+
+
+/*index.js configura y renderiza la aplicación principal (App) en el elemento del DOM con el id "root".
+ También se configura el enrutamiento basado en el navegador y se proporciona acceso global a la tienda de Redux 
+ a través del componente Provider*/

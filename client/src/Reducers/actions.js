@@ -8,24 +8,86 @@ import {
     FILTER_BY_CREATED, 
     SORT_BY_RATING, 
     SORT_BY_NAME
-} from '../constants'
+} from '../constants' //constantes representan las diferentes acciones que se pueden realizar.
 
+//import axios from 'axios';
+
+
+
+/*export function getGames() {
+    return function (dispatch) {
+      return axios.get(`${server}/videogames`)
+        .then(json => {
+          dispatch({
+            type: GET_GAMES,
+            payload: JSON
+          });
+        })
+        .catch(error => alert(error));
+    };
+  }
+  
+  export function getGenres() {
+    return function (dispatch) {
+      return axios.get(`${server}/genres`)
+        .then(response => {
+          dispatch({
+            type: GET_GENRES,
+            payload: response.data
+          });
+        })
+        .catch(error => alert(error));
+    };
+  }
+  
+  export function getGameDetails(idGame) {
+    return function (dispatch) {
+      return axios.get(`${server}/videogames/${idGame}`)
+        .then(response => {
+          dispatch({
+            type: GET_GAME_DETAILS,
+            payload: response.data
+          });
+        })
+        .catch(error => alert(error));
+    };
+  }
+  
+  export function getGameSearched(name) {
+    return function (dispatch) {
+      return axios.get(`${server}}/videogames?name=${name}`)
+        .then(response => {
+          if (response.data.msg === 'Error: no matches found') {
+            throw new Error(response.data.msg);
+          } else {
+            dispatch({
+              type: GET_GAME_SEARCHED,
+              payload: response.data
+            });
+          }
+        })
+        .catch(error => alert(error));
+    };
+  }
+*/
+
+//la función getGames que realiza una solicitud GET a la API para obtener la lista de juegos.
+// Luego, se dispara una acción GET_GAMES con los datos obtenidos.
 export function getGames() {
     return function (dispatch) {
         return fetch(`${server}/videogames`)
             .then(response => response.json())
-            .then(json => {
-
+            .then(json1 => {
                 dispatch({
                     type: GET_GAMES,
-                    payload: json
+                    payload: json1
                 });
-
-            })
+           })
             .catch(error => alert(error));
     };
 }
-
+//la función getGenres que realiza una solicitud GET a la API para obtener la lista de géneros de juegos.
+// Luego, se dispara una acción GET_GENRES con los datos obtenidos.
 export function getGenres() {
     return function (dispatch) {
         return fetch(`${server}/genres`)
@@ -42,6 +104,8 @@ export function getGenres() {
     };
 }
 
+//la función getGameDetails que toma un idGame como parámetro y realiza una solicitud GET a la API para 
+//obtener los detalles de un juego específico. Luego, se dispara una acción GET_GAME_DETAILS con los datos obtenidos.
 export function getGameDetails(idGame) {
     return function (dispatch) {
         return fetch(`${server}/videogames/${idGame}`)
@@ -58,6 +122,9 @@ export function getGameDetails(idGame) {
     };
 }
 
+//la función getGameSearched que toma un nombre de juego como parámetro y realiza una solicitud GET a la API para buscar
+//juegos que coincidan con el nombre proporcionado. Si no se encuentran coincidencias, se lanza una excepción. 
+//De lo contrario, se dispara una acción GET_GAME_SEARCHED con los datos obtenidos.
 export function getGameSearched(name) {
     return function (dispatch) {
         return fetch(`${server}/videogames?name=${name}`)
@@ -77,6 +144,8 @@ export function getGameSearched(name) {
     };
 }
 
+//las funciones filterByGenre, filterByCreated, sortByRating y sortByName que toman un objeto payload como parámetro y 
+//retornan una acción respectiva con el tipo de acción y el payload proporcionado.
 export function filterByGenre(payload) {
     return {
         type: FILTER_BY_GENRE,
@@ -104,3 +173,7 @@ export function sortByName(payload) {
         payload
     }
 }
+
+/*exporta funciones de acción que realizan solicitudes a la API para obtener datos de juegos, filtrar y ordenar juegos,
+ y obtener detalles de juegos específicos. Estas funciones de acción se utilizan en Redux para actualizar el estado 
+ global de la aplicación*/

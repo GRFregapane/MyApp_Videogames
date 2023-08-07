@@ -28,8 +28,8 @@ router.get("/videogames", async (req, res) => {
     res.status(500).send({ msg: `${error}` });
   }
 });
-//obtengo videosjuegos por Id
 
+//obtengo videosjuegos por Id
 router.get("/videogames/:id", async (req, res) => {
   try {
     res.json(await getGameDetails(req, Videogame, Genre));
@@ -42,6 +42,7 @@ router.get("/videogames/:id", async (req, res) => {
 router.get("/genres", async (req, res) => {
   try {
     let genres = await getGenresDB(Genre);
+    console.log(genres);
     genres.length < 19
       ? res.json({ msg: "missing genres, please refresh" })
       : res.json(genres);
@@ -83,3 +84,6 @@ module.exports = router;
 // })  ¡¡¡ANOTAR EN HOJA POR POSIBLE CAMBIO EN VIVO, OBTENER PLATAFORMAS
 
 
+/*configura las rutas para los endpoints relacionados con los videojuegos y los géneros en un servidor Express.
+ Proporciona funcionalidades para obtener una lista de videojuegos, obtener detalles de un videojuego específico, 
+ obtener una lista de géneros y publicar un nuevo videojuego*/

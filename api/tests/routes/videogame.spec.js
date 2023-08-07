@@ -28,3 +28,6 @@ describe('Genre routes', () => {
     )
   });
 });
+
+/*realiza pruebas de ruta para verificar que la ruta /genres del servidor responda correctamente con el código 
+de estado 200 y que devuelva un array de géneros con la longitud esperada*/

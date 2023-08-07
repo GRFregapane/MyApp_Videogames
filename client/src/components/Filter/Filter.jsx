@@ -53,3 +53,17 @@ export default Filter;
 
 
 
+/*El componente Filter recibe tres propiedades: handleChangeGenre, val y count.
+
+Dentro del componente, se define un arreglo de objetos llamado genres que contiene diferentes géneros de juegos 
+junto con sus identificadores.
+Renderiza:
+a. Un elemento div que muestra la cantidad de juegos encontrados, utilizando la propiedad count.
+b. Un elemento div que contiene una etiqueta label y un elemento select. La etiqueta se muestra como "Choose genre" y 
+el elemento select es un cuadro de selección desplegable para elegir un género de juego. El valor
+seleccionado en el cuadro de selección está determinado por la propiedad val. Al seleccionar una opción, se llama a la 
+función handleChangeGenre.
+
+Dentro del elemento select, se renderiza una opción adicional con clave "title" y valor vacío para representar la opción 
+de "TODOS". Luego, se renderizan opciones para cada género en el arreglo genres, utilizando el identificador como clave y 
+el nombre del género como valor.*/

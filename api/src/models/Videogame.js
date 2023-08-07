@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('videogame', {
+  sequelize.define('Videogame', {
     id:{
       type: DataTypes.UUID,
       allowNull: false,
@@ -39,3 +39,8 @@ module.exports = (sequelize) => {
     }
   });
 };
+
+
+/*define un modelo de datos "Videogame" con propiedades como el nombre, descripción, fecha de lanzamiento, calificación, 
+plataformas y más. Este modelo se puede utilizar para interactuar con la tabla "videogames" en la base de datos y realizar
+ operaciones de creación, lectura, actualización y eliminación de registros de videojuegos*/

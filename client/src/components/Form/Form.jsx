@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import MultiSelector from '../MultipleSelector/MultipleSelector';
 import s from './Form.module.scss'
 
-
+//Se define una función validate que recibe un objeto input y valida los campos del formulario.
+// Retorna un objeto errors que contiene los errores encontrados.
 function validate(input) {
     let errors = {};
     if (!input.name && !input.description) {
@@ -23,6 +24,8 @@ function validate(input) {
     return errors;
   }
 
+//función postGame, recibe un juego y realiza una solicitud POST al servidor para crear el juego. 
+//Utiliza la función axios.post para enviar la solicitud y muestra el mensaje de respuesta o de error utilizando swal.  
 function postGame(game){
   
   axios.post(`${server}/videogame`, game)
@@ -36,11 +39,13 @@ function postGame(game){
   });
 }
 
+/*El componente Form utiliza el hook useDispatch para obtener la función dispatch de Redux y useSelector 
+para obtener el estado genres del store de Redux*/
 export function Form() {
 
     const dispatch = useDispatch()
-    const genres = useSelector((state)=>state.genres) //necesita los géneros para mostrar en el multiselector
-    const [game,setGame] = useState({
+    const genres = useSelector((state)=>state.genres) //necesito los géneros para mostrar en el multiselector
+    const [game,setGame] = useState({ //hook para inicializar el estado del formulario game con los campos:
         name:'',
         description:'',
         released:'',
@@ -48,11 +53,13 @@ export function Form() {
         genres: [],
         platforms:[]
     })
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({}) //utilizo useState para inicializar el estado errors con un objeto vacío.
 
-    useEffect(()=>setErrors(validate(game)),[game])
+    useEffect(()=>setErrors(validate(game)),[game]) //hook para validar el formulario cada vez que cambia el estado game.
 
-    function handleInputChange (e) {    
+  /*la función handleInputChange que maneja los cambios en los campos del formulario. Actualiza el estado game con los
+   nuevos valores*/
+    function handleInputChange (e) { 
         const {name,value} = e.target;
         
         setGame((prev)=>({
@@ -61,7 +68,8 @@ export function Form() {
         }))  
         // setErrors(validate(game)) 
     }
-//-------------------Función para manejar el multiselector-------------
+//Función para manejar los clicks en el compon multiselector.
+//Agrega o elimina elementos del arreglo game[prop] según el estado actual.
     function handleOnClick(prop,ele){
       
         if(!game[prop].some(item=> item.id === ele.id)){
@@ -82,12 +90,15 @@ export function Form() {
         }
         
     }
-
+//se verifica si un elemento está seleccionado en el arreglo game[prop].
     function isItemInSelection(prop,ele){
         if(game[prop]?.find(item=> item.id === ele.id)) return true
         return false
     }
-//-------------------publicar solicitud para backend para estado global como cuerpo -------------
+//publicar solicitud para backend para estado global
+/*maneja el envío del formulario. Si existen errores de validación, muestra un mensaje de error utilizando swal.
+De lo contrario, llama a la función postGame para crear el juego en el servidor, luego llama a la función getGames 
+para actualizar la lista de juegos en el estado global y reinicia el estado game a sus valores iniciales*/
     async function handleSubmit (e) {
         e.preventDefault();
         
@@ -113,6 +124,10 @@ export function Form() {
         }     
     }
 
+/*renderiza un formulario que contiene diversos campos de entrada y elementos MultiSelector. Los campos de entrada están
+vinculados al estado game y se actualizan mediante la función handleInputChange. Los elementos MultiSelector reciben
+datos (platforms y genres), funciones (handleOnClick y isItemInSelection) y se utilizan para seleccionar plataformas y
+géneros para el juego*/
   return (
     <div className={s.flex}>
       {/* <div className={} > */}
@@ -126,7 +141,6 @@ export function Form() {
                         name='name'
                         value={game.name}
                         onChange={handleInputChange}
-                        required
                     />
                     {errors.name && ( 
                         <p className={s.danger}>{errors.name}</p>
@@ -141,7 +155,6 @@ export function Form() {
                     name='description'
                     value={game.description}
                     onChange={handleInputChange}
-                    required
                   />
                   {errors.description && ( 
                         <p className={s.danger}>{errors.description}</p>
@@ -171,8 +184,6 @@ export function Form() {
                     step='any'
                     name='rating'
                     value={game.rating}
-                    max='5'
-                    min="0"
                     onChange={handleInputChange}
                   />
                 </div>
@@ -182,7 +193,6 @@ export function Form() {
                 data= {platforms} 
                 handleOnClick={handleOnClick}
                 isItemInSelection ={isItemInSelection}
-                
                 />
                 {errors.platforms && ( 
                         <p className="danger">{errors.platforms}</p>
@@ -192,8 +202,7 @@ export function Form() {
                 data= {genres} 
                 handleOnClick={handleOnClick}
                 isItemInSelection ={isItemInSelection}
-                
-                />
+              />
              
               <div>
                 <div className={s.divButton} >
@@ -208,3 +217,7 @@ export function Form() {
 };
 
 export default Form;
+
+/*Form representa un formulario para crear un nuevo juego. Los campos del formulario se validan y se muestra un mensaje 
+de error si existen errores. Al enviar el formulario, se crea el juego en el servidor y se actualiza la lista de juegos
+ en el estado global*/

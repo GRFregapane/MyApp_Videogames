@@ -8,7 +8,7 @@ import NavBar from './components/NavBar/NavBar'
 import Form from './components/Form/Form';
 
 function App() {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); //para obtener la ubicación actual de la ruta.
   return (
     <div className="App">
       {pathname === "/" ? null: <NavBar/>}
@@ -23,3 +23,6 @@ function App() {
 }
 
 export default App;
+
+/*App.js define las rutas de la aplicación y renderiza los componentes correspondientes según la ruta actual. 
+También se utiliza el componente NavBar para mostrar una barra de navegación en todas las rutas, excepto en la ruta raíz*/

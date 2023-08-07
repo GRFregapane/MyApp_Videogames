@@ -3,7 +3,10 @@ const axios = require('axios');
 const sequelize = require('sequelize');
 const { API_KEY, API_HOST} = process.env;
 
-
+// la función getAllVideogames realiza solicitudes a una API externa y a una base de datos para obtener una lista 
+//combinada de juegos. Primero, obtiene juegos de la API externa hasta alcanzar un total de 100 juegos. Luego, 
+//realiza una solicitud a la base de datos y combina los juegos obtenidos de ambas fuentes en un único array que se 
+//devuelve como resultado.
 async function getAllVideogames (model1,model2){
     // try {
         let games = [],
@@ -15,9 +18,12 @@ async function getAllVideogames (model1,model2){
                 games.push( {
                     name:element.name,
                     id:element.id,
+                    description:element.description,
                     background_image: element.background_image,
                     genres:element.genres,
-                    rating: element.rating
+                    rating:element.rating,
+                    platforms:element.platforms,
+                    released:element.released,
                     })
           
         })
@@ -38,6 +44,8 @@ async function getAllVideogames (model1,model2){
     // }    
 }
 
+// la función getVideogamesByName realiza una búsqueda de juegos por nombre en una API externa y en una base de datos.
+// Los juegos encontrados se combinan en un único array que se devuelve como resultado.
 async function getVideogamesByName(req,model1,model2){
         let name = req.query.name.toLowerCase()
         let games = [];
@@ -46,9 +54,12 @@ async function getVideogamesByName(req,model1,model2){
                 games.push( {
                     name:element.name,
                     id:element.id,
+                    description:element.description,
                     background_image: element.background_image,
                     genres:element.genres,
-                    rating: element.rating
+                    rating:element.rating,
+                    platforms:element.platforms,
+                    released:element.released,
                     })          
         })
         let aux = await model1.findAll({
@@ -67,6 +78,8 @@ async function getVideogamesByName(req,model1,model2){
       
 }
 
+// la función getGameDetails recibe un ID de juego y obtiene los detalles de ese juego desde la base de datos o 
+//desde una API externa, dependiendo de la longitud del ID. Los detalles del juego se devuelven como resultado.
 async function getGameDetails(req,model1, model2){
     // try {
         let idGame = req.params.id;
@@ -122,6 +135,9 @@ async function getGameDetails(req,model1, model2){
     // }
 }
 
+// la función postGame recibe los datos de un juego a través de req.body y crea un nuevo juego en la base de datos 
+//utilizando el modelo model1. Si el juego se crea con éxito, se devuelve un mensaje de éxito. Si el juego ya existe 
+//en la base de datos, se devuelve un mensaje indicando que el juego ya existe.
 async function postGame(req,model1){
 
         const { name, description, released, rating, platforms, genres} = req.body
@@ -155,3 +171,6 @@ module.exports ={
     postGame
  
 }
+
+/*estas funciones proporcionan funcionalidades para obtener y gestionar videojuegos, incluyendo la obtención 
+de una lista combinada de juegos, búsqueda de juegos por nombre y creación de nuevos juegos en la base de datos*/

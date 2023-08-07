@@ -1,4 +1,4 @@
-
+const server = 'http://localhost:3001';
 const GET_GAMES = "GET_GAMES";
 const GET_GENRES = "GET_GENRES";
 const GET_GAME_DETAILS = "GET_GAME_DETAILS";
@@ -221,8 +221,7 @@ const platforms = [
   },
 ];
 
-const server = 'http://localhost:3001';
-//const server = "https://fierce-dawn-86733.herokuapp.com";
+
 
 export {
   server,

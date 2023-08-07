@@ -6,20 +6,23 @@ import { useParams } from "react-router-dom";
 import Animation from '../../img/Ryu.gif' //modificar
 
 
-function GameDetails ({ getGameDetails, gameDetails}){
-    const { id } = useParams();
-    const background={
+function GameDetails ({ getGameDetails, gameDetails}){ //recibe las siguientes propiedades: getGameDetails (acción para
+    // obtener los detalles del juego) y gameDetails (objeto con los detalles del juego).
+    const { id } = useParams(); //useParams para obtener el parámetro id de la URL.
+    const background={ //fondo de la página
         backgroundImage: `url(${gameDetails.background_image_additional})`,
         backgroundSize: 'cover'
     }
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true) //useState para inicializar el estado loading como true.
    
-    async function getDetails(){
+//función getDetails asincrónica que llama a getGameDetails con el id del juego y luego cambia el estado loading a false.
+    async function getDetails(){ 
         await getGameDetails(id)
         setLoading(false)
     }
 
+//useEffect para llamar a la función getDetails cuando el id cambia. Se establece loading en true antes de llamar a getDetails.    
     useEffect(()=>{
         setLoading(true)
         getDetails()
@@ -27,14 +30,15 @@ function GameDetails ({ getGameDetails, gameDetails}){
     }, [id]);
   
 
-    if(loading){
+    if(loading){ //Si loading es true, se muestra una animación de carga
         return(
             <div className={s.container}>
                 <img src={Animation} className={loading?s.loading:s.inactive} alt=""/>
                 Loading...
             </div>
         )
-    }else{
+ //Si loading es false, se muestra el detalle del juego. El fondo de la página se establece utilizando el estilo background. Los detalles del juego se muestran en una tarjeta dividida en dos secciones.       
+    }else{ 
         return(
             <div className= {s.back} style={background}>
 
@@ -76,7 +80,7 @@ function GameDetails ({ getGameDetails, gameDetails}){
     }
 
 }
-
+//para conectar el estado gameDetails y la acción getGameDetails al componente.
 function mapStateToProps(state){
     return {
         gameDetails: state.gameDetails
@@ -90,3 +94,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect (mapStateToProps, mapDispatchToProps)(GameDetails)
+
+/*el componente GameDetails muestra los detalles de un juego, incluyendo su imagen, nombre, calificación,
+ fecha de lanzamiento, géneros, plataformas y descripción. Muestra una animación de carga mientras se obtienen
+  los detalles del juego. Los detalles se obtienen utilizando Redux y se actualizan a través de la acción getGameDetails*/

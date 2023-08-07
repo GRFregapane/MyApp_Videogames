@@ -19,3 +19,6 @@ const LandingPage = () =>{
 }
 
 export default LandingPage;
+
+/*LandingPage muestra un mensaje de bienvenida y un botón para 
+iniciar la aplicación. Al hacer clic en el botón, el usuario es redirigido a la página de videojuegos*/

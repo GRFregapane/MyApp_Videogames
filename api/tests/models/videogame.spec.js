@@ -30,7 +30,12 @@ describe('Videogame model', () => {
         
       });
     });
-    describe("Creating games", () => {
+/*La primera prueba valida que se lance un error si el nombre del videojuego es nulo al intentar crear un nuevo registro 
+en la base de datos.
+La segunda prueba verifica que el método create funcione correctamente cuando se proporciona un nombre válido,
+una descripción y una plataforma*/    
+
+describe("Creating games", () => {
      
       it("should return the game created", async () => {
         let temp = await Videogame.create({
@@ -47,4 +52,5 @@ describe('Videogame model', () => {
     });
   });
 });
+/*La prueba verifica que el método create devuelva el juego creado correctamente y que los valores sean los esperados.*/
 

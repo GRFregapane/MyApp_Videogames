@@ -10,6 +10,7 @@ conn.sync({ force: true }).then(() => {
     console.log(`%s listening at ${PORT}`);
   });
 });
+//Configura la conexión a la base de datos, sincroniza los modelos con la base de datos y luego inicia el servidor.
 
 
 
